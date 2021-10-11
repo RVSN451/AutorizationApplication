@@ -1,0 +1,22 @@
+GET http://localhost:8080/authorize?user=U1&password=111
+Accept: application/json
+
+###
+
+GET http://localhost:8080/authorize?user=U2&password=222
+Accept: application/json
+
+###
+
+
+// USER не существует
+GET http://localhost:8080/authorize?user=U&password=222
+Accept: application/json
+
+###
+
+// USER отсутствует в QueryString
+GET http://localhost:8080/authorize?user=&password=222
+Accept: application/json
+
+###
