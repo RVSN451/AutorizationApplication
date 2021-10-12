@@ -1,14 +1,19 @@
 package com.example.Autorization.controller;
 
+import com.example.Autorization.model.User;
 import com.example.Autorization.repository.Authorities;
-import com.example.Autorization.repository.AuthorizationRepository;
 import com.example.Autorization.service.AuthorizationService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/")
+@Validated
 public class AuthorizationController {
     AuthorizationService service;
 
@@ -18,7 +23,12 @@ public class AuthorizationController {
     }
 
     @GetMapping("/authorize")
-    public List<Authorities> getAuthorities(@RequestParam("user") String user, @RequestParam("password") String password) {
-        return service.getAuthorities(user, password);
+    public List<Authorities> getAuthorities(@Valid User user) {
+        return service.getAuthorities(user.getName(), user.getPassword());
+    }
+
+    @PostMapping("/registration")
+    public String setRegistration(@Valid User user) {
+        return service.setRegistration(user.getName(), user.getPassword());
     }
 }

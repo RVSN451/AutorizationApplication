@@ -33,4 +33,9 @@ public class AuthorizationService {
     private boolean isEmpty(List<?> str) {
         return str == null || str.isEmpty();
     }
+
+
+    public String setRegistration(String name, String password) {
+        return userRepository.setRegistration(name, password);
+    }
 }

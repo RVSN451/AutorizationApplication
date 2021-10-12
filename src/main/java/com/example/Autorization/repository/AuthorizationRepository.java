@@ -30,4 +30,17 @@ public class AuthorizationRepository {
 
         return users.get(userKey);
     }
+
+    public String setRegistration(String name, String password) {
+        String response = "";
+        HashMap<String, String> newUser = new HashMap<>();
+        newUser.put(name, password);
+        if (users.containsKey(newUser)){
+            response = name + " - this username+password is already taken. Try something else.";
+        } else {
+            response = name + " - registration completed successfully";
+            users.put(newUser, Arrays.asList(Authorities.values()));
+        }
+        return response;
+    }
 }
