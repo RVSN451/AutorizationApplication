@@ -14,17 +14,17 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
     @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new UserArgumentResolver());
+public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+    resolvers.add(new UserArgumentResolver());
 
+}
+
+private static final class UserArgumentResolver implements HandlerMethodArgumentResolver {
+
+    @Override
+    public boolean supportsParameter(MethodParameter parameter) {
+        return parameter.getParameterType().isAssignableFrom(User.class);
     }
-
-    private static final class UserArgumentResolver implements HandlerMethodArgumentResolver {
-
-        @Override
-        public boolean supportsParameter(MethodParameter parameter) {
-            return parameter.getParameterType().isAssignableFrom(User.class);
-        }
 
         @Override
         public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
