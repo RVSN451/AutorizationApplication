@@ -34,4 +34,20 @@ private static final class UserArgumentResolver implements HandlerMethodArgument
             return new User(name, password);
         }
     }
+
+    private static final class UserBodyResolver implements HandlerMethodArgumentResolver {
+
+        @Override
+        public boolean supportsParameter(MethodParameter parameter) {
+            return parameter.getParameterType().isAssignableFrom(User.class);
+        }
+
+        @Override
+        public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+                                      NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+            String name = webRequest.getParameter("user");
+            String password = webRequest.getParameter("password");
+            return new User(name, password);
+        }
+    }
 }

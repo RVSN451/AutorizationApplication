@@ -27,6 +27,8 @@ public class AuthorizationRepository {
 
         HashMap<String, String> userKey = new HashMap<>();
         userKey.put(user, password);
+        System.out.println(users);
+
 
         return users.get(userKey);
     }
@@ -39,7 +41,11 @@ public class AuthorizationRepository {
             response = name + " - this username+password is already taken. Try something else.";
         } else {
             response = name + " - registration completed successfully";
-            users.put(newUser, Arrays.asList(Authorities.values()));
+            List<Authorities> authoritiesNewUser = new ArrayList<>();
+            authoritiesNewUser.add(Authorities.READ);
+            authoritiesNewUser.add(Authorities.WRITE);
+            users.put(newUser, authoritiesNewUser);
+
         }
         return response;
     }

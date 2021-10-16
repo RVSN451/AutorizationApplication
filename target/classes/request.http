@@ -1,9 +1,9 @@
-GET http://localhost:8080/signin.html
+GET http://localhost:80/signin.html
 Accept: application/json
 
 ###
 
-GET http://localhost:8080/authorize?user=U1&password=111
+GET http://localhost:80/authorize?user=U1&password=111
 Accept: application/json
 
 ###

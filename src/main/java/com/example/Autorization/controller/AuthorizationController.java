@@ -6,6 +6,7 @@ import com.example.Autorization.service.AuthorizationService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -28,7 +29,16 @@ public class AuthorizationController {
     }
 
     @PostMapping("/registration")
-    public String setRegistration(@Valid User user) {
+    public String setRegistration(@RequestBody String body) {
+        body.replace("user=", "");
+        body.replace("password=", "");
+        System.out.println(body);
+
+        String[] bodyUser = body
+                .replace("user=", "")
+                .replace("password=", "")
+                .split("&");
+        User user = new User(bodyUser[0], bodyUser[1]);
         return service.setRegistration(user.getName(), user.getPassword());
     }
 }
