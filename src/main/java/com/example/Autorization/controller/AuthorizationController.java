@@ -25,20 +25,18 @@ public class AuthorizationController {
 
     @GetMapping("/authorize")
     public List<Authorities> getAuthorities(@Valid User user) {
+        System.out.println("/authorize: " + user.getName() + "  +  " + user.getPassword());
         return service.getAuthorities(user.getName(), user.getPassword());
     }
 
     @PostMapping("/registration")
     public String setRegistration(@RequestBody String body) {
-        body.replace("user=", "");
-        body.replace("password=", "");
-        System.out.println(body);
-
         String[] bodyUser = body
                 .replace("user=", "")
                 .replace("password=", "")
                 .split("&");
-        User user = new User(bodyUser[0], bodyUser[1]);
+
+        @Valid User user = new User(bodyUser[0], bodyUser[1]);
         return service.setRegistration(user.getName(), user.getPassword());
     }
 }
