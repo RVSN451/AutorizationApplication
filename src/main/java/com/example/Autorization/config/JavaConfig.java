@@ -1,4 +1,4 @@
-package com.example.Autorization.config;
+/*package com.example.Autorization.config;
 
 import com.example.Autorization.AutorizationApplication;
 import com.example.Autorization.controller.AuthorizationController;
@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JavaConfig {
-   /* @Bean
-    public AuthorizationController controller(AuthorizationService service) {
+   *//* @Bean
+    public AuthoriztionController controller(AuthorizationService service) {
         return new AuthorizationController(service);
     }
 
@@ -26,7 +26,7 @@ public class JavaConfig {
     public AuthorizationRepository repository() {
         return new AuthorizationRepository();
     }
-*/
+*//*
     @SpringBootApplication
     public static class AutorizationApplication {
 
@@ -35,6 +35,6 @@ public class JavaConfig {
         }
 
     }
-}
+}*/
 
 

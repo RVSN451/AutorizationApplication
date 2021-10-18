@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  autrzimage-compose1:
+    build: .
+    ports:
+      - "9999:8080"
+
+  autrzimage-compose2:
+    image: autrzimage
+    ports:
+      - "7777:8080"
+
+
+
+
